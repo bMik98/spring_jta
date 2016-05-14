@@ -1,4 +1,4 @@
-create table orders
+create table order
 (
 id int not null primary key,
 name varchar(40) not null,
