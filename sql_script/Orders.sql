@@ -1,6 +1,6 @@
 create table orders
 (
-id int primary key not null primary key,
+id int not null primary key,
 name varchar(40) not null,
 lastname varchar(60) not null,
 age int,
