@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS springJTA
 
 USE springJTA;
 
-DROP TABLE IF EXISTS order;
+DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS user;
 
@@ -22,7 +22,7 @@ CREATE TABLE user
   	PRIMARY KEY (user_id)
 );
 
-CREATE TABLE order
+CREATE TABLE orders
 (
   	order_id	INT UNSIGNED   NOT NULL AUTO_INCREMENT,
 	order_num	VARCHAR(40) NOT NULL,
@@ -40,6 +40,5 @@ CREATE TABLE product
 	product_num	VARCHAR(40) NOT NULL,
 	product_name	VARCHAR(100) NOT NULL,
 	product_rest	INT,
-  	PRIMARY KEY (order_id)
+  	PRIMARY KEY (product_id)
 );
-
