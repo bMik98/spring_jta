@@ -7,9 +7,9 @@ import java.sql.Statement;
 
 public class General {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/new_schema";
+    private static final String URL = "jdbc:mysql://localhost:3306/springjta";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "12345";
+    private static final String PASSWORD = "root";
 
     public static void main(String[] args) {
         DataFactory dataFactory = new DataFactory();
@@ -24,7 +24,7 @@ public class General {
             Statement statement = connection.createStatement();
 
             for (int i = 0; i < 400; i++) {
-                String dataQuery = "INSERT INTO User( name, lastname, age, phone, email, city, street, number_house, number_apartment) VALUES('" +
+                String dataQuery = "INSERT INTO User( name, lastname, age, phone, email, city, street, house_num, apartment_num) VALUES('" +
                         dataFactory.getName() + "','" +
                         dataFactory.getLastName() + "','" +
                         dataFactory.getNumberBetween(1, 80) + "','" +
