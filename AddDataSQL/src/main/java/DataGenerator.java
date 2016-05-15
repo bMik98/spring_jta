@@ -53,7 +53,7 @@ public class DataGenerator {
                 "VALUES(?,?,?,?,?,?,?,?,?)";
         PreparedStatement stmt = conn.prepareStatement(INSERT_USER);
         for (int i = 0; i < number; i++) {
-            viewInsertProgress(i, "user");
+            printInsertProgress(i, "user");
             stmt.setString(1, dataFactory.getName());
             stmt.setString(2, dataFactory.getLastName());
             stmt.setInt(3, dataFactory.getNumberBetween(1, 80));
@@ -65,7 +65,7 @@ public class DataGenerator {
             stmt.setInt(9, dataFactory.getNumberBetween(1, 2000));
             stmt.executeUpdate();
         }
-        viewInsertProgress(number, "user");
+        System.out.printf("%d records done!%n", number);
         stmt.close();
     }
 
@@ -73,13 +73,13 @@ public class DataGenerator {
         final String INSERT_PRODUCT = "INSERT INTO product(product_num, product_name, product_rest) VALUES(?,?,?)";
         PreparedStatement stmt = conn.prepareStatement(INSERT_PRODUCT);
         for (int i = 0; i < number; i++) {
-            viewInsertProgress(i, "product");
+            printInsertProgress(i, "product");
             stmt.setString(1, dataFactory.getRandomChars(8, 12));
             stmt.setString(2, dataFactory.getRandomWord());
             stmt.setInt(3, dataFactory.getNumberBetween(1, 20000));
             stmt.executeUpdate();
         }
-        viewInsertProgress(number, "user");
+        System.out.printf("%d records done!%n", number);
         stmt.close();
     }
 
@@ -89,7 +89,7 @@ public class DataGenerator {
                 "VALUES(?,?,?,?,?,?)";
         PreparedStatement stmt = conn.prepareStatement(INSERT_ORDER);
         for (int i = 0; i < number; i++) {
-            viewInsertProgress(i, "orders");
+            printInsertProgress(i, "orders");
             stmt.setString(1, dataFactory.getRandomChars(6, 6));
             stmt.setDate(2, new java.sql.Date(dataFactory.getBirthDate().getTime()));
             stmt.setString(3, dataFactory.getLastName());
@@ -98,11 +98,11 @@ public class DataGenerator {
             stmt.setInt(6, dataFactory.getNumberBetween(1, 200));
             stmt.executeUpdate();
         }
-        viewInsertProgress(number, "orders");
+        System.out.printf("%d records done!%n", number);
         stmt.close();
     }
 
-    private void viewInsertProgress(int count, String table) {
+    private void printInsertProgress(int count, String table) {
         if ((count % 100 == 0) && (count > 0)) {
             System.out.printf("%d %s records...%n", count, table);
         }
