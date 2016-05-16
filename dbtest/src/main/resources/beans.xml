@@ -43,4 +43,7 @@
     <bean id="orderDao" class="com.becomejavasenior.dao.OrderDaoJdbc">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
+
+    <bean id="userService" class="com.becomejavasenior.service.UserServiceImpl">
+    </bean>
 </beans>

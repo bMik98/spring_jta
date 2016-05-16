@@ -4,6 +4,8 @@ import com.becomejavasenior.dao.OrderDao;
 import com.becomejavasenior.dao.ProductDao;
 import com.becomejavasenior.dao.UserDao;
 import com.becomejavasenior.model.User;
+import com.becomejavasenior.service.UserService;
+import com.becomejavasenior.service.UserServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,7 +16,7 @@ public class AppTest {
 
     public void run() {
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-        UserDao userDao = (UserDao) context.getBean("userDao");
+        /*UserDao userDao = (UserDao) context.getBean("userDao");
         ProductDao productDao = (ProductDao) context.getBean("productDao");
         OrderDao orderDao = (OrderDao) context.getBean("orderDao");
         System.out.println(userDao.select().size());
@@ -34,6 +36,9 @@ public class AppTest {
             System.out.println("delete success");
         } else {
             System.out.println("did not delete!");
-        }
+        }*/
+        UserService userService = (UserService)context.getBean("userService");
+
+
     }
 }
