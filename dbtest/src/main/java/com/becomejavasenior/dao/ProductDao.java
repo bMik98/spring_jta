@@ -12,7 +12,7 @@ public interface ProductDao {
 
     void delete(final Product product);
 
-    Product getById(final Product product);
+    Product getById(Integer id);
 
     List<Product> select();
 }

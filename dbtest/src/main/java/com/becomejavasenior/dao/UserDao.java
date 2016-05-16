@@ -12,7 +12,7 @@ public interface UserDao {
 
     void delete(final User user);
 
-    User getById(final User user);
+    User getById(Integer id);
 
     List<User> select();
 }

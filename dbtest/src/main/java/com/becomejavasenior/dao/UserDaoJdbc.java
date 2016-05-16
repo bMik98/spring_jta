@@ -93,10 +93,10 @@ public class UserDaoJdbc extends JdbcDaoSupport implements UserDao {
     }
 
     @Override
-    public User getById(User user) {
+    public User getById(Integer id) {
         User foundUser;
         try {
-            foundUser = getJdbcTemplate().queryForObject(SQL_GET, new Object[]{user.getId()}, getRowMapper());
+            foundUser = getJdbcTemplate().queryForObject(SQL_GET, new Object[]{id}, getRowMapper());
         } catch (EmptyResultDataAccessException e) {
             return null;
         }

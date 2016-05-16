@@ -13,7 +13,7 @@ public interface OrderDao {
 
     void delete(final Order order);
 
-    Order getById(final Order order);
+    Order getById(Integer id);
 
     List<Order> select();
 }

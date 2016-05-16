@@ -93,10 +93,10 @@ public class ProductDaoJdbc extends JdbcDaoSupport implements ProductDao {
     }
 
     @Override
-    public Product getById(Product product) {
+    public Product getById(Integer id) {
         Product foundProduct;
         try {
-            foundProduct = getJdbcTemplate().queryForObject(SQL_GET, new Object[]{product.getId()}, getRowMapper());
+            foundProduct = getJdbcTemplate().queryForObject(SQL_GET, new Object[]{id}, getRowMapper());
         } catch (EmptyResultDataAccessException e) {
             return null;
         }

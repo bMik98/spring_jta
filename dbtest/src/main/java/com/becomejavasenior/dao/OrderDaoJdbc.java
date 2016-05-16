@@ -93,10 +93,10 @@ public class OrderDaoJdbc extends JdbcDaoSupport implements OrderDao {
     }
 
     @Override
-    public Order getById(Order order) {
+    public Order getById(Integer id) {
         Order foundOrder;
         try {
-            foundOrder = getJdbcTemplate().queryForObject(SQL_GET, new Object[]{order.getId()}, getRowMapper());
+            foundOrder = getJdbcTemplate().queryForObject(SQL_GET, new Object[]{id}, getRowMapper());
         } catch (EmptyResultDataAccessException e) {
             return null;
         }

@@ -27,35 +27,35 @@ public class TransactionalMethods {
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Order findOrderById(Integer id) {
-		return orderDaoImpl.getById(null);
+		return orderDaoImpl.getById(id);
 
 	}
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Product findProductById(Integer id) {
-		return productDaoImpl.getById(null);
+		return productDaoImpl.getById(id);
 	}
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public User findUserById(Integer id) {
-		return userDaoImpl.getById(null);
+		return userDaoImpl.getById(id);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW, noRollbackFor = NullPointerException.class)
-	public void deleteItemsById(Integer id) {
+	public long deleteItemsById(Integer id) {
 		long time = System.nanoTime();
 		orderDaoImpl.delete(findOrderById(id));
 		productDaoImpl.delete(findProductById(id));
 		userDaoImpl.delete(findUserById(id));
-		System.out.printf("Updated for %d", System.nanoTime() - time);
+		return System.nanoTime() - time;
 	}
 
 	@Transactional
-	public void updateProductById(Integer id) {
+	public long updateProductById(Integer id) {
 		long time = System.nanoTime();
 		Product product = findProductById(id);
 		product.setFvchar("UPDATED VALUE!");
 		productDaoImpl.update(product);
-		System.out.printf("Updated for %d",System.nanoTime() - time);
+		return System.nanoTime() - time;
 	}
 }
