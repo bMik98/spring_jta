@@ -3,7 +3,7 @@ package com.becomejavasenior.model;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class User {
+public class Product {
     private long id;
     private byte ftiny;
     private short fsmall;
@@ -15,10 +15,10 @@ public class User {
     private String fvchar;
     private BigDecimal fdec;
 
-    public User() {
+    public Product() {
     }
 
-    public User(final long id) {
+    public Product(final long id) {
         this.id = id;
     }
 

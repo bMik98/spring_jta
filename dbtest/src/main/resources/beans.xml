@@ -26,8 +26,21 @@
         <constructor-arg ref="dataSource"/>
     </bean>
 
-    <bean id="personRepo" class="com.becomejavasenior">
+    <bean id="dataFactory" class="org.fluttercode.datafactory.impl.DataFactory" />
+
+    <bean id="dataCreator" class="com.becomejavasenior.model.DataCreator">
+        <constructor-arg ref="dataFactory" />
+    </bean>
+
+    <bean id="userDao" class="com.becomejavasenior.dao.UserDaoJdbc">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
 
+    <bean id="productDao" class="com.becomejavasenior.dao.ProductDaoJdbc">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean id="orderDao" class="com.becomejavasenior.dao.OrderDaoJdbc">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
 </beans>
