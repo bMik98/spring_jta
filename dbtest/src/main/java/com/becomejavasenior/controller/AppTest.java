@@ -1,5 +1,11 @@
 package com.becomejavasenior.controller;
 
+import com.becomejavasenior.service.general.GeneralService;
+import com.becomejavasenior.service.general.GeneralServiceImpl;
+import com.becomejavasenior.service.general.GeneralServiceTransImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class AppTest {
     public static void main(String[] args) {
         new AppTest().run();
@@ -26,7 +32,9 @@ public class AppTest {
         if(userDao.getById(user) == null) {
             System.out.println("delete success");
         } else {*/
-            System.out.println("did not delete!");
+        //System.out.println("did not delete!");
+
+
 
     }
 }

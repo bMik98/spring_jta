@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
@@ -9,6 +10,7 @@
 
     <context:component-scan base-package="com.becomejavasenior"/>
     <context:annotation-config/>
+    <tx:annotation-driven/>
 
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -44,9 +46,6 @@
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
 
-    <bean id="userService" class="com.becomejavasenior.service.UserServiceImpl">
-    </bean>
-
     <bean id="transactionalMethods" class="com.becomejavasenior.service.TransactionalMethods">
         <constructor-arg ref="orderDao" />
         <constructor-arg ref="productDao" />
@@ -56,5 +55,24 @@
         <constructor-arg ref="orderDao" />
         <constructor-arg ref="productDao" />
         <constructor-arg ref="userDao"/>
+    </bean>
+
+    <bean id="productService" class="com.becomejavasenior.service.general.GeneralServiceImpl">
+        <property name="genericDao" ref="productDao"/>
+    </bean>
+    <bean id="orderService" class="com.becomejavasenior.service.general.GeneralServiceImpl">
+        <property name="genericDao" ref="orderDao"/>
+    </bean>
+    <bean id="userService" class="com.becomejavasenior.service.general.GeneralServiceImpl">
+        <property name="genericDao" ref="userDao"/>
+    </bean>
+    <bean id="productTransService" class="com.becomejavasenior.service.general.GeneralServiceTransImpl">
+        <property name="genericDao" ref="productDao"/>
+    </bean>
+    <bean id="orderTransService" class="com.becomejavasenior.service.general.GeneralServiceTransImpl">
+        <property name="genericDao" ref="orderDao"/>
+    </bean>
+    <bean id="userTransService" class="com.becomejavasenior.service.general.GeneralServiceTransImpl">
+        <property name="genericDao" ref="userDao"/>
     </bean>
 </beans>

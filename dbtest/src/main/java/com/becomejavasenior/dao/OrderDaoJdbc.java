@@ -47,6 +47,10 @@ public class OrderDaoJdbc extends JdbcDaoSupport implements OrderDao {
         return insOrder;
     }
 
+
+
+
+
     @Override
     public void insertBatch(final List<Order> orders) {
         getJdbcTemplate().batchUpdate(SQL_INSERT, new BatchPreparedStatementSetter() {

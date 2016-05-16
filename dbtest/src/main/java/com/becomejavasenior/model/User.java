@@ -3,7 +3,7 @@ package com.becomejavasenior.model;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class User {
+public class User implements Entity{
     private long id;
     private byte ftiny;
     private short fsmall;

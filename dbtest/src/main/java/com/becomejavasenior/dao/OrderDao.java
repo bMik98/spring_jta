@@ -4,8 +4,8 @@ import com.becomejavasenior.model.Order;
 
 import java.util.List;
 
-public interface OrderDao {
-    Order insert(final Order order);
+public interface OrderDao extends GenericDao<Order> {
+    /*Order insert(final Order order);
 
     void insertBatch(final List<Order> orders);
 
@@ -15,5 +15,5 @@ public interface OrderDao {
 
     Order getById(Integer id);
 
-    List<Order> select();
+    List<Order> select();*/
 }

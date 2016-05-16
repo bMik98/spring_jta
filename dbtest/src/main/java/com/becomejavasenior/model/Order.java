@@ -3,7 +3,7 @@ package com.becomejavasenior.model;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class Order {
+public class Order implements Entity{
     private long id;
     private byte ftiny;
     private short fsmall;

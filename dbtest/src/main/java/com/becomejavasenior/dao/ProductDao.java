@@ -3,8 +3,8 @@ package com.becomejavasenior.dao;
 import com.becomejavasenior.model.Product;
 import java.util.List;
 
-public interface ProductDao {
-    Product insert(final Product product);
+public interface ProductDao extends GenericDao<Product>{
+    /*Product insert(final Product product);
 
     void insertBatch(final List<Product> products);
 
@@ -14,5 +14,5 @@ public interface ProductDao {
 
     Product getById(Integer id);
 
-    List<Product> select();
+    List<Product> select();*/
 }
