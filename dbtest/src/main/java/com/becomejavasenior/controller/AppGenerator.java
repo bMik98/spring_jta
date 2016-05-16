@@ -7,6 +7,8 @@ import com.becomejavasenior.model.DataCreator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Scanner;
+
 public class AppGenerator {
     public static final int PACKAGE_SIZE = 500;
     ApplicationContext context;
@@ -18,7 +20,30 @@ public class AppGenerator {
     }
 
     public static void main(String[] args) {
-        new AppGenerator("beans.xml").fillTables();
+        AppGenerator appGenerator = new AppGenerator("beans.xml");
+        while (true) {
+            System.out.println("=========================\nOk! Choose action:\n" +
+                    "   1. Fill database tables.\n" +
+                    "   2. Test database operations.\n" +
+                    "   5. Exit.");
+            Scanner scanner = new Scanner(System.in);
+            String value = scanner.nextLine();
+            switch (value) {
+                case "1": {
+                    appGenerator.fillTables();
+                    break;
+                }
+                case "2": {
+                    System.out.println("Nothing :)");
+                    break;
+                }
+                case "5": {
+                    System.exit(0);
+                    break;
+                }
+            }
+        }
+
     }
 
     public void fillTables() {
