@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `order`
 (
-	id		INT UNSIGNED NOT NULL AUTO_INCREMENT
+	id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
   	ftiny	TINYINT,
   	fsmall	SMALLINT,
   	fbig	BIGINT,
@@ -24,7 +24,7 @@ CREATE TABLE `order`
 
 CREATE TABLE `product`
 (
-	id		INT UNSIGNED NOT NULL AUTO_INCREMENT
+	id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
   	ftiny	TINYINT,
   	fsmall	SMALLINT,
   	fbig	BIGINT,
@@ -33,13 +33,13 @@ CREATE TABLE `product`
   	fyear	YEAR(4),
   	fchar	CHAR(2),
   	fvchar	VARCHAR(255),
-  	fdec	DECIMAL(10, 0)
+  	fdec	DECIMAL(10, 0),
   	PRIMARY KEY (id)
 );
 
 CREATE TABLE `user`
 (
-	id		INT UNSIGNED NOT NULL AUTO_INCREMENT
+	id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
   	ftiny	TINYINT,
   	fsmall	SMALLINT,
   	fbig	BIGINT,
@@ -48,6 +48,6 @@ CREATE TABLE `user`
   	fyear	YEAR(4),
   	fchar	CHAR(2),
   	fvchar	VARCHAR(255),
-  	fdec	DECIMAL(10, 0)
+  	fdec	DECIMAL(10, 0),
   	PRIMARY KEY (id)
 );
