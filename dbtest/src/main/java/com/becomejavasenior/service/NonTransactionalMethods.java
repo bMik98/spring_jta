@@ -12,6 +12,7 @@ This class contains methods annotated with @Transactional
 @author: sks
  */
 public class NonTransactionalMethods {
+
 	private OrderDao orderDaoImpl;
 	private ProductDao productDaoImpl;
 	private UserDao userDaoImpl;
@@ -37,17 +38,32 @@ public class NonTransactionalMethods {
 
 	public long deleteItemsById(Integer id) {
 		long time = System.nanoTime();
-		orderDaoImpl.delete(findOrderById(id));
-		productDaoImpl.delete(findProductById(id));
-		userDaoImpl.delete(findUserById(id));
-		return System.nanoTime() - time;
+		try {
+			orderDaoImpl.delete(findOrderById(id));
+			productDaoImpl.delete(findProductById(id));
+			userDaoImpl.delete(findUserById(id));
+		} catch (NullPointerException e) {
+			System.err.println("Error! Record not found.");
+		} catch (Exception e) {
+			System.err.printf("Error! Exception %s.\n", e.getClass().toString());
+		} finally {
+			return System.nanoTime() - time;
+		}
 	}
 
 	public long updateProductById(Integer id) {
 		long time = System.nanoTime();
-		Product product = findProductById(id);
-		product.setFvchar("UPDATED VALUE!");
-		productDaoImpl.update(product);
-		return System.nanoTime() - time;
+		try {
+			Product product = findProductById(id);
+			product.setFvchar("UPDATED VALUE!");
+			productDaoImpl.update(product);
+			return System.nanoTime() - time;
+		} catch (NullPointerException e) {
+			System.err.println("Error! Record not found.");
+		} catch (Exception e) {
+			System.err.printf("Error! Exception %s.\n", e.getClass().toString());
+		} finally {
+			return System.nanoTime() - time;
+		}
 	}
 }

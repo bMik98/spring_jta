@@ -5,12 +5,12 @@ import java.sql.Timestamp;
 
 public class Product implements Entity{
     private long id;
-    private byte ftiny;
-    private short fsmall;
-    private long fbig;
-    private double fdouble;
+    private Byte ftiny;
+    private Short fsmall;
+    private Long fbig;
+    private Double fdouble;
     private Timestamp fdate;
-    private int fyear;
+    private Integer fyear;
     private String fchar;
     private String fvchar;
     private BigDecimal fdec;
@@ -30,35 +30,35 @@ public class Product implements Entity{
         this.id = id;
     }
 
-    public byte getFtiny() {
+    public Byte getFtiny() {
         return ftiny;
     }
 
-    public void setFtiny(byte ftiny) {
+    public void setFtiny(Byte ftiny) {
         this.ftiny = ftiny;
     }
 
-    public short getFsmall() {
+    public Short getFsmall() {
         return fsmall;
     }
 
-    public void setFsmall(short fsmall) {
+    public void setFsmall(Short fsmall) {
         this.fsmall = fsmall;
     }
 
-    public long getFbig() {
+    public Long getFbig() {
         return fbig;
     }
 
-    public void setFbig(long fbig) {
+    public void setFbig(Long fbig) {
         this.fbig = fbig;
     }
 
-    public double getFdouble() {
+    public Double getFdouble() {
         return fdouble;
     }
 
-    public void setFdouble(double fdouble) {
+    public void setFdouble(Double fdouble) {
         this.fdouble = fdouble;
     }
 
@@ -70,11 +70,11 @@ public class Product implements Entity{
         this.fdate = fdate;
     }
 
-    public int getFyear() {
+    public Integer getFyear() {
         return fyear;
     }
 
-    public void setFyear(int fyear) {
+    public void setFyear(Integer fyear) {
         this.fyear = fyear;
     }
 

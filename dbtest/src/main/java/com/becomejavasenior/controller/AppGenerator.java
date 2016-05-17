@@ -36,7 +36,7 @@ public class AppGenerator {
 					"   1. Fill database tables.\n" +
 					"   2. Test database operations(version1).\n" +
 					"   3. Test database operations(version2).\n" +
-					"   5. Exit.");
+					"   0. Exit.");
 			Scanner scanner = new Scanner(System.in);
 			String value = scanner.nextLine();
 			switch (value) {
@@ -53,7 +53,8 @@ public class AppGenerator {
 						td += transactionalMethods.deleteItemsById(random.nextInt(10000));
 						tu += transactionalMethods.updateProductById(random.nextInt(10000));
 					}
-					System.out.printf("Non-transactional method updated for %d nanoseconds\n",ntu/10);
+
+					System.out.printf("Average invocation time:\nNon-transactional method updated for %d nanoseconds\n",ntu/10);
 					System.out.printf("Non-transactional method deleted for %d nanoseconds\n",ntd/10);
 					System.out.printf("Transactional method updated for     %d nanoseconds\n",tu/10);
 					System.out.printf("Transactional method deleted for     %d nanoseconds\n",td/10);
@@ -123,7 +124,7 @@ public class AppGenerator {
 					}
 					break;
 				}
-				case "5": {
+				case "0": {
 					System.exit(0);
 					break;
 				}

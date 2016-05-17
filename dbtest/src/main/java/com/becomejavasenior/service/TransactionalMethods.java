@@ -41,21 +41,36 @@ public class TransactionalMethods {
 		return userDaoImpl.getById(id);
 	}
 
-	@Transactional(propagation = Propagation.REQUIRES_NEW, noRollbackFor = NullPointerException.class)
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public long deleteItemsById(Integer id) {
 		long time = System.nanoTime();
-		orderDaoImpl.delete(findOrderById(id));
-		productDaoImpl.delete(findProductById(id));
-		userDaoImpl.delete(findUserById(id));
-		return System.nanoTime() - time;
+		try {
+			orderDaoImpl.delete(findOrderById(id));
+			productDaoImpl.delete(findProductById(id));
+			userDaoImpl.delete(findUserById(id));
+		} catch (NullPointerException e) {
+			System.err.println("Error! Record not found, updates rolled back.");
+		} catch (Exception e) {
+			System.err.printf("Error! Exception %s, updates rolled back.\n", e.getClass().toString());
+		} finally {
+			return System.nanoTime() - time;
+		}
 	}
 
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public long updateProductById(Integer id) {
 		long time = System.nanoTime();
-		Product product = findProductById(id);
-		product.setFvchar("UPDATED VALUE!");
-		productDaoImpl.update(product);
-		return System.nanoTime() - time;
+		try {
+			Product product = findProductById(id);
+			product.setFvchar("UPDATED VALUE!");
+			productDaoImpl.update(product);
+			return System.nanoTime() - time;
+		} catch (NullPointerException e) {
+			System.err.println("Error! Record not found, updates rolled back.");
+		} catch (Exception e) {
+			System.err.printf("Error! Exception %s, updates rolled back.\n", e.getClass().toString());
+		} finally {
+			return System.nanoTime() - time;
+		}
 	}
 }
