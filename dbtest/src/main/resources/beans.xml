@@ -33,7 +33,7 @@
         <property name="password" value="${jdbc.password}"/>
         <property name="initialSize" value="3" />
         <property name="maxActive" value="5" />
-        <property name="defaultAutoCommit" value="false" />
+        <!--<property name="defaultAutoCommit" value="false" />-->
     </bean>
 
 
