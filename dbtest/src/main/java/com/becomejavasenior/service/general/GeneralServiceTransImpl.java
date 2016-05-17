@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Shevchenko on 17.05.2016.
  */
-public class GeneralServiceTransImpl implements GeneralService, GeneralExtService {
+public class GeneralServiceTransImpl implements GeneralTransService {
     GenericDao genericDao;
 
     public GenericDao getGenericDao() {

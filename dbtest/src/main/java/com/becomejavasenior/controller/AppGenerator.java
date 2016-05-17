@@ -5,9 +5,7 @@ import com.becomejavasenior.dao.ProductDao;
 import com.becomejavasenior.dao.UserDao;
 import com.becomejavasenior.model.DataCreator;
 import com.becomejavasenior.service.*;
-import com.becomejavasenior.service.general.GeneralService;
-import com.becomejavasenior.service.general.GeneralServiceImpl;
-import com.becomejavasenior.service.general.GeneralServiceTransImpl;
+import com.becomejavasenior.service.general.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -62,64 +60,62 @@ public class AppGenerator {
 				}
 				case "3":{
 
-					GeneralService productService = (GeneralServiceImpl)appGenerator.context.getBean("productService");
-					GeneralService userService = (GeneralServiceImpl)appGenerator.context.getBean("userService");
-					GeneralService orderService = (GeneralServiceImpl)appGenerator.context.getBean("orderService");
+					GeneralService productService = (GeneralService)appGenerator.context.getBean("productService");
+					GeneralService userService = (GeneralService)appGenerator.context.getBean("userService");
+					GeneralService orderService = (GeneralService)appGenerator.context.getBean("orderService");
 
-					GeneralServiceTransImpl productTransService = (GeneralServiceTransImpl)appGenerator.context.getBean("productTransService");
-					GeneralServiceTransImpl userTransService = (GeneralServiceTransImpl)appGenerator.context.getBean("userTransService");
-					GeneralServiceTransImpl orderTransService = (GeneralServiceTransImpl)appGenerator.context.getBean("orderTransService");
+					GeneralTransService productTransService = (GeneralTransService)appGenerator.context.getBean("productTransService");
+					GeneralTransService userTransService = (GeneralTransService)appGenerator.context.getBean("userTransService");
+					GeneralTransService orderTransService = (GeneralTransService)appGenerator.context.getBean("orderTransService");
 
-					for(int i = 0; i<2; i++) {
+					int countExt = 1;
+					int countIns = 1;
+					for(int i = 0; i < countExt; i++) {
 
 						System.out.println("Non-transactional operation");
 
 						long startTime = System.nanoTime();
-						for (int j = 0; j<50; j++) {
+						for (int j = 0; j < countIns; j++) {
 							productService.operationGroup(productService.getEntity1000().get((int) Math.random()));
 							orderService.operationGroup(orderService.getEntity1000().get((int) Math.random()));
 							userService.operationGroup(userService.getEntity1000().get((int) Math.random()));
-							System.out.print(".");
 						}
-						System.out.println("Spent time = " + (System.nanoTime() - startTime) / 1000000000.0 + " s");
+						System.out.println("Spent time = " + (System.nanoTime() - startTime) / 1000000.0 + " ms");
 
 						System.out.println();
 						System.out.println("Transactional operation with propagation.REQUIRED");
 
 						startTime = System.nanoTime();
-						for(int j = 0; j<50;j++) {
+						for(int j = 0; j < countIns;j++) {
 							productTransService.operationGroup(productTransService.getEntity1000().get((int) Math.random()));
 							orderTransService.operationGroup(orderTransService.getEntity1000().get((int) Math.random()));
 							userTransService.operationGroup(userTransService.getEntity1000().get((int) Math.random()));
-							System.out.print(".");
 						}
-						System.out.println("Spent time = " + (System.nanoTime() - startTime) / 1000000000.0 + " s");
+						System.out.println("Spent time = " + (System.nanoTime() - startTime) / 1000000.0 + " ms");
 
 
 						System.out.println();
 						System.out.println("Transactional operation with propagation.REQUIRES_NEW");
 
 						startTime = System.nanoTime();
-						for(int j = 0; j<50;j++) {
+						for(int j = 0; j < countIns;j++) {
 							productTransService.operationGroupReqNew(productTransService.getEntity1000ReqNew().get((int) Math.random()));
 							orderTransService.operationGroupReqNew(orderTransService.getEntity1000ReqNew().get((int) Math.random()));
 							userTransService.operationGroupReqNew(userTransService.getEntity1000ReqNew().get((int) Math.random()));
-							System.out.print(".");
 						}
-						System.out.println("Spent time = " + (System.nanoTime() - startTime) / 1000000000.0 + " s");
+						System.out.println("Spent time = " + (System.nanoTime() - startTime) / 1000000.0 + " ms");
 
 
 						System.out.println();
 						System.out.println("Transactional operation with propagation.NOT_SUPPORTED");
 
 						startTime = System.nanoTime();
-						for(int j = 0; j<50;j++) {
+						for(int j = 0; j < countIns;j++) {
 							productTransService.operationGroupNotSup(productTransService.getEntity1000NotSup().get((int) Math.random()));
 							orderTransService.operationGroupNotSup(orderTransService.getEntity1000NotSup().get((int) Math.random()));
 							userTransService.operationGroupNotSup(userTransService.getEntity1000NotSup().get((int) Math.random()));
-							System.out.print(".");
 						}
-						System.out.println("Spent time = " + (System.nanoTime() - startTime) / 1000000000.0 + " s");
+						System.out.println("Spent time = " + (System.nanoTime() - startTime) / 1000000.0 + " ms");
 						System.out.println("============================================================");
 					}
 					break;
